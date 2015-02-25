@@ -62,12 +62,12 @@
     function doit() {
       var arr1 = list1.value.split('\n').map(normalize);
       var arr2 = list2.value.split('\n').map(normalize);
-      var result = arr1.filter(function(element) {
+      var arrresult = arr1.filter(function(element) {
         return arr2.indexOf(element) > -1;
       });
       list1.value = arr1.join('\n');
       list2.value = arr2.join('\n');
-      result.value = result.length ? result.join('\n') : 'No results founds';
+      result.value = arrresult.length ? arrresult.join('\n') : 'No results founds';
     }
     </script>
 
