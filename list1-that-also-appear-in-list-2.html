@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Data-tools : Tools that allow for simple transformations of data online">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Data-tools</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/DesignAShirt/data-tools">View on GitHub</a>
+
+          <h1 id="project_title">Data-tools</h1>
+          <h2 id="project_tagline">Tools that allow for simple transformations of data online</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/DesignAShirt/data-tools/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/DesignAShirt/data-tools/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+      
+      <h3>Finds all entries in list 1, that also exist in list 2</h3>
+      <table style="width:100%;">
+        <tr>
+          <td style="width:50%;">
+            <textbox id="list1"></textbox>
+          </td>
+          <td>
+            <textbox id="list2"></textbox>
+          </td>
+        </tr>
+      </table>
+      <button id="go" onclick="doit();">Process</button>
+      <hr>
+      <h5>Result</h5>
+      <textarea id="result></textarea>
+      
+      </section>
+    </div>
+    <script>
+    var list1 = document.querySelector('#list1');
+    var list2 = document.querySelector('#list2');
+    var result = document.querySelector('#result');
+    
+    function normalize(str) {
+      return (str || '').toLowerCase().trim();
+    }
+    
+    function doit() {
+      var arr1 = list1.value.split('\n').map(normalize);
+      var arr2 = list2.value.split('\n').map(normalize);
+      var result = arr1.filter(function(element) {
+        return arr2.indexOf(element) > -1;
+      });
+      list1.value = arr1.join('\n');
+      list2.value = arr2.join('\n');
+      result.value = result.length ? result.join('\n') : 'No results founds';
+    }
+    </script>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Data-tools maintained by <a href="https://github.com/DesignAShirt">DesignAShirt</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
